@@ -11,5 +11,12 @@
     "sprite"
   ],
   "author": "Michael Matuzak",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/emkay/nesly-sprite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emkay/nesly-sprite/issues"
+  }
 }
