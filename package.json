@@ -1,6 +1,6 @@
 {
   "name": "nesly-sprite",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Rip the sprite data out of a NES CHR file",
   "main": "index.js",
   "scripts": {
