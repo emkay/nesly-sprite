@@ -48,5 +48,43 @@ function get(index, sprites) {
     return decode(channelA, channelB);
 }
 
+function put(index, sprites, sprite) {
+    var start = index * 16;
+    var encoded = this.encode_sprite(spr);
+    for (var i=start, j=0; i < (start + 16); i++, j++){
+        sprites[i] = encoded[j];
+    }
+    return sprites;
+}
+
+function encode(sprite) {
+    var channelA = [];
+    var channelB = [];
+    for (var y=0; y <8; y++){
+        var a = 0;
+        var b = 0;
+        for (var x=0; x < 8; x++){
+            var pixel = spr[y][x];
+            var bit = Math.pow(2,7-x);
+            switch(pixel){
+                case 1:
+                    a = a | bit;
+                    break;
+                case 2:
+                    b = b | bit;
+                    break;
+                case 3:
+                    a = a | bit;
+                    b = b | bit;
+                    break;
+            }
+        }
+        channelA.push(a);
+        channelB.push(b);
+    }
+    return channelA.concat(channelB);
+}
+
 module.exports.get = get;
+module.exports.put = put;
 module.exports.rip = rip;
