@@ -18,5 +18,8 @@
   },
   "bugs": {
     "url": "https://github.com/emkay/nesly-sprite/issues"
+  },
+  "devDependencies": {
+    "tap": "~0.4.4"
   }
 }
