@@ -15,13 +15,15 @@ function rip(file) {
 
 function decode(channelA, channelB) {
     var sprite = [];
-    for (var y=0; y <8; y++) {
-        var a = channelA[y];
-        var b = channelB[y];
-        var line = [];
+    var a, b, line, bit, pixel, y;
+
+    for (y=0; y <8; y++) {
+        a = channelA[y];
+        b = channelB[y];
+        line = [];
         for (var x=0; x <8; x++) {
-            var bit = Math.pow(2,7-x);
-            var pixel = -1;
+            bit = Math.pow(2,7-x);
+            pixel = -1;
             if (!(a & bit) && !(b & bit)) {
                 pixel = 0;
             } else if ((a & bit) && !(b & bit)) {
@@ -51,7 +53,9 @@ function get(index, sprites) {
 function put(index, sprites, sprite) {
     var start = index * 16;
     var encoded = this.encode_sprite(spr);
-    for (var i=start, j=0; i < (start + 16); i++, j++){
+    var i, j;
+
+    for (i=start, j=0; i < (start + 16); i++, j++){
         sprites[i] = encoded[j];
     }
     return sprites;
@@ -60,12 +64,15 @@ function put(index, sprites, sprite) {
 function encode(sprite) {
     var channelA = [];
     var channelB = [];
-    for (var y=0; y <8; y++){
-        var a = 0;
-        var b = 0;
-        for (var x=0; x < 8; x++){
-            var pixel = spr[y][x];
-            var bit = Math.pow(2,7-x);
+
+    var a, b, pixel, bit, x, y;
+
+    for (y=0; y <8; y++){
+        a = 0;
+        b = 0;
+        for (x=0; x < 8; x++){
+            pixel = spr[y][x];
+            bit = Math.pow(2,7-x);
             switch(pixel){
                 case 1:
                     a = a | bit;
