@@ -3,6 +3,8 @@ nesly-sprite
 
 Rip the sprite data out of a NES CHR file
 
+[![build status](https://secure.travis-ci.org/emkay/nesly-sprite.png)](http://travis-ci.org/emkay/nesly-sprite)
+
 Example:
 
 ```
