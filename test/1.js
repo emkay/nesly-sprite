@@ -1,8 +1,8 @@
 var neslySprite = require('../');
 var test = require("tap").test;
 
-test("make sure rip is working", function (t) {
-    var sprites = neslySprite.rip('test.chr');
+test("make sure read is working", function (t) {
+    var sprites = neslySprite.read('test.chr');
     t.ok(sprites, "sprites should be something!");
 
     var expected = [ [ 1, 1, 1, 1, 1, 1, 1, 1 ],

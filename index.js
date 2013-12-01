@@ -1,4 +1,4 @@
-function rip(file) {
+function read(file) {
     var fs = require('fs');
     var chr = fs.readFileSync(file, 'binary');
 
@@ -98,4 +98,4 @@ function encode(sprite) {
 module.exports.load = load;
 module.exports.get = get;
 module.exports.put = put;
-module.exports.rip = rip;
+module.exports.read = read;
