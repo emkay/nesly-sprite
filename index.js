@@ -1,10 +1,13 @@
-var fs = require('fs');
-
 function rip(file) {
-    var sprites = [];
+    var fs = require('fs');
     var chr = fs.readFileSync(file, 'binary');
 
+    return load(chr);
+}
+
+function load(chr) {
     var chrSize = chr.length;
+    var sprites = [];
 
     for (var i =0; i < chrSize; i++) {
         sprites.push(chr.charCodeAt(i) && 0xFF);
@@ -92,6 +95,7 @@ function encode(sprite) {
     return channelA.concat(channelB);
 }
 
+module.exports.load = load;
 module.exports.get = get;
 module.exports.put = put;
 module.exports.rip = rip;
