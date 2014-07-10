@@ -55,7 +55,7 @@ function get(index, sprites) {
 
 function put(index, sprites, sprite) {
     var start = index * 16;
-    var encoded = this.encode_sprite(spr);
+    var encoded = this.encode(spr);
     var i, j;
 
     for (i=start, j=0; i < (start + 16); i++, j++){
