@@ -1,4 +1,5 @@
-var neslySprite = require('../');
-var sprites = neslySprite.rip('mario.chr');
-
-console.log(neslySprite.get(0, sprites));
+var Ns = require('../');
+var ns = new Ns('mario.chr');
+console.log(ns.get(0));
+console.log(ns.get(1));
+console.log(ns.get(2));

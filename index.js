@@ -1,8 +1,11 @@
-function read(file) {
-    var fs = require('fs');
-    var chr = fs.readFileSync(file, 'binary');
+var fs = require('fs');
 
-    return load(chr);
+function Chr(file) {
+    this.sprites = load(read(file));
+}
+
+function read(file) {
+    return fs.readFileSync(file, 'binary');
 }
 
 function load(chr) {
@@ -16,7 +19,7 @@ function load(chr) {
     return sprites;
 }
 
-function decode(channelA, channelB) {
+Chr.prototype.decode = function decode(channelA, channelB) {
     var sprite = [];
     var a, b, line, bit, pixel, y;
 
@@ -43,17 +46,17 @@ function decode(channelA, channelB) {
     return sprite;
 }
 
-function get(index, sprites) {
+Chr.prototype.get = function get(index) {
     var a = index * 16;
     var b = a + 8;
     var c = b + 8;
-    var channelA = sprites.slice(a, b);
-    var channelB = sprites.slice(b, c);
+    var channelA = this.sprites.slice(a, b);
+    var channelB = this.sprites.slice(b, c);
 
-    return decode(channelA, channelB);
+    return this.decode(channelA, channelB);
 }
 
-function put(index, sprites, sprite) {
+Chr.prototype.put = function put(index, sprite) {
     var start = index * 16;
     var encoded = this.encode(spr);
     var i, j;
@@ -64,7 +67,7 @@ function put(index, sprites, sprite) {
     return sprites;
 }
 
-function encode(sprite) {
+Chr.prototype.encode = function encode(sprite) {
     var channelA = [];
     var channelB = [];
 
@@ -95,7 +98,4 @@ function encode(sprite) {
     return channelA.concat(channelB);
 }
 
-module.exports.load = load;
-module.exports.get = get;
-module.exports.put = put;
-module.exports.read = read;
+module.exports = Chr;
