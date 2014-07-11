@@ -58,13 +58,13 @@ Chr.prototype.get = function get(index) {
 
 Chr.prototype.put = function put(index, sprite) {
     var start = index * 16;
-    var encoded = this.encode(spr);
+    var encoded = this.encode(sprite);
     var i, j;
 
     for (i=start, j=0; i < (start + 16); i++, j++){
-        sprites[i] = encoded[j];
+        this.sprites[i] = encoded[j];
     }
-    return sprites;
+    return this.sprites;
 }
 
 Chr.prototype.encode = function encode(sprite) {
@@ -77,7 +77,7 @@ Chr.prototype.encode = function encode(sprite) {
         a = 0;
         b = 0;
         for (x=0; x < 8; x++){
-            pixel = spr[y][x];
+            pixel = sprite[y][x];
             bit = Math.pow(2,7-x);
             switch(pixel){
                 case 1:
