@@ -12,7 +12,7 @@ function load(chr) {
     var chrSize = chr.length;
     var sprites = [];
 
-    for (var i =0; i < chrSize; i++) {
+    for (var i = 0; i < chrSize; i++) {
         sprites.push(chr.charCodeAt(i) && 0xFF);
     }
 
@@ -21,9 +21,9 @@ function load(chr) {
 
 Chr.prototype.decode = function decode(channelA, channelB) {
     var sprite = [];
-    var a, b, line, bit, pixel, y;
+    var a, b, line, bit, pixel;
 
-    for (y=0; y <8; y++) {
+    for (var y = 0; y <8; y++) {
         a = channelA[y];
         b = channelB[y];
         line = [];
@@ -59,9 +59,8 @@ Chr.prototype.get = function get(index) {
 Chr.prototype.put = function put(index, sprite) {
     var start = index * 16;
     var encoded = this.encode(sprite);
-    var i, j;
 
-    for (i=start, j=0; i < (start + 16); i++, j++){
+    for (var i = start, var j = 0; i < (start + 16); i++, j++){
         this.sprites[i] = encoded[j];
     }
     return this.sprites;
@@ -71,12 +70,12 @@ Chr.prototype.encode = function encode(sprite) {
     var channelA = [];
     var channelB = [];
 
-    var a, b, pixel, bit, x, y;
+    var a, b, pixel, bit;
 
-    for (y=0; y <8; y++){
+    for (var y = 0; y < 8; y++){
         a = 0;
         b = 0;
-        for (x=0; x < 8; x++){
+        for (var x = 0; x < 8; x++){
             pixel = sprite[y][x];
             bit = Math.pow(2,7-x);
             switch(pixel){
