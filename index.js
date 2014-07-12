@@ -60,7 +60,7 @@ Chr.prototype.put = function put(index, sprite) {
     var start = index * 16;
     var encoded = this.encode(sprite);
 
-    for (var i = start, var j = 0; i < (start + 16); i++, j++){
+    for (var i = start, j = 0; i < (start + 16); i++, j++){
         this.sprites[i] = encoded[j];
     }
     return this.sprites;
